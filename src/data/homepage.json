@@ -54,7 +54,7 @@
             "twitch": "sil3nt__slim",
             "name": "Helix"
         },
-		{
+		    {
             "twitch": "kettlekernlol",
             "name": "Kettlekern"
         },
@@ -81,7 +81,7 @@
         {
             "twitch": "hugthebed2",
             "name": "Wicket"
-        },
+        }
     ],
     "steamgroup": {
         "link": "https://steamcommunity.com/groups/RL4D2L",
@@ -121,8 +121,8 @@
         {
             "link": "https://maps.rl4d2l.xyz/UndeadZone.zip",
             "title": "The Undead Zone"
-        }
-		  {
+        },
+		    {
             "link": "https://maps.rl4d2l.xyz/nomercyrehab_v4.zip",
             "title": "No Mercy Rehab"
         }
@@ -131,18 +131,18 @@
     "castHudLink": "http://rl4d2l.xyz/rl4d2lcasthud.vpk",
     "clipHighlight": "https://www.youtube.com/embed/OJLrMFNeHIw?rel=0",
     "clipCompilations":[
-	  {
+	    {
         "title": "Season 6",
         "url": "https://www.youtube.com/watch?v=omJH3Zo5opo"
       },
-	  {
+	    {
         "title": "Season 4",
         "url": "https://www.youtube.com/watch?v=OJLrMFNeHIw"
       },
       {
         "title": "Season 3",
         "url": "https://www.youtube.com/watch?v=QUWnL2dx6ow"
-      }
+      },
       {
         "title": "Season 2",
         "url": "https://www.youtube.com/watch?v=V3hsoEtDd_M"
