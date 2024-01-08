@@ -1,4 +1,4 @@
-.div(class="text-center season-container season-1" + (1 === seasonOptions[0].value ? ' active' : ''))
+.div(class="text-center season-container season-1" + ((seasonOptions[0] && 1 === seasonOptions[0].value) ? ' active' : ''))
     .bracket.pb-3
         section.round.semifinals
             .winners

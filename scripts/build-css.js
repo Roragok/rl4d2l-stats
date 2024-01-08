@@ -15,7 +15,6 @@ const logger = require('../src/cli/logger');
 module.exports = async (publicDir) => {
     logger.info('Writing index.css...');
     const cssPath = path.join(publicDir, 'css/index.css');
-    await fs.copy(path.join(__dirname, '../src/css/handsontable.css'), cssPath);
 
     logger.info('Purging unused css...');
     const content = ['js/bundle.min.js', 'js/bootstrap.bundle.min.js', 'index.html'].map(f => path.join(publicDir, f));

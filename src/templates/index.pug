@@ -10,6 +10,7 @@ html(lang="en")
         if !production
             link(href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css", rel="stylesheet", integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf", crossorigin="anonymous")
         link(rel="stylesheet", type="text/css", href="css/"+cssName)
+        link(rel="stylesheet". type="text/css", href="https://cdn.jsdelivr.net/npm/handsontable@13.1.0/dist/handsontable.full.min.css")
     body
         include nav.pug
         include submenu.pug
@@ -26,7 +27,7 @@ html(lang="en")
             include tabs/profile.pug
             include tabs/teamgen.pug
                     
-        script(src="https://cdn.jsdelivr.net/npm/handsontable@latest/dist/handsontable.full.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/handsontable@13.1.0/dist/handsontable.full.min.js")
         script(src=src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous")
         script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js", integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o", crossorigin="anonymous")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js")

@@ -35,10 +35,6 @@
             "name": "AwfulWaffle"
         },
         {
-            "twitch": "devilesk",
-            "name": "devilesk"
-        },
-        {
             "twitch": "fakdoto",
             "name": "Number 1 Frank Stan"
         },
@@ -89,47 +85,39 @@
     },
     "servers": [
         {
-            "link": "steam://connect/www.rl4d2l.xyz",
+            "link": "https://zombaes.roragok.com",
             "title": "Server 1"
-        },
-        {
-            "link": "steam://connect/www.rl4d2l.xyz:27016",
-            "title": "Server 2"
-        },
-        {
-            "link": "steam://connect/www.rl4d2l.xyz:27017",
-            "title": "Test Server"
         }
     ],
     "customCampaignsFooter": {
-        "link": "http://maps.rl4d2l.xyz/",
+        "link": "https://maps.roragok.com/",
         "title": "Other Custom Campaigns"
     },
     "customCampaigns": [
         {
-            "link": "http://maps.rl4d2l.xyz/DiescraperRedux.zip",
+            "link": "https://maps.roragok.com/DiescraperRedux.zip",
             "title": "Diescraper Redux"
         },
         {
-            "link": "http://maps.rl4d2l.xyz/HardRainDownpour.zip",
+            "link": "https://maps.roragok.com/HardRainDownpour.zip",
             "title": "Hard Rain: Downpour"
         },
         {
-            "link": "http://maps.rl4d2l.xyz/SuicideBlitz2.zip",
+            "link": "https://maps.roragok.com/SuicideBlitz2.zip",
             "title": "Suicide Blitz 2"
         },
         {
-            "link": "https://maps.rl4d2l.xyz/UndeadZone.zip",
+            "link": "https://maps.roragok.com/UndeadZone.zip",
             "title": "The Undead Zone"
         },
 		    {
-            "link": "https://maps.rl4d2l.xyz/nomercyrehab_v4.zip",
+            "link": "https://maps.roragok.com/nomercyrehab_v4.zip",
             "title": "No Mercy Rehab"
         }
     ],
-    "autoexecLink": "http://rl4d2l.xyz/autoexec.cfg",
-    "castHudLink": "http://rl4d2l.xyz/rl4d2lcasthud.vpk",
-    "clipHighlight": "https://www.youtube.com/embed/OJLrMFNeHIw?rel=0",
+    "autoexecLink": "https://maps.roragok.com/autoexec.cfg",
+    "castHudLink": "https://maps.roragok.com/rl4d2lcasthud.vpk",
+    "clipHighlight": "https://www.youtube.com/watch?v=omJH3Zo5opo?rel=0",
     "clipCompilations":[
 	    {
         "title": "Season 6",
