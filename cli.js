@@ -72,8 +72,7 @@ ON a.matchId = b.matchId
 JOIN players na ON a.steamid = na.steamid
 JOIN players nb ON b.steamid = nb.steamid
 WHERE a.matchId = ${matchId}
-GROUP BY a.matchId, a.map, a.result, b.result
-ORDER BY a.matchId DESC;`;
+GROUP BY a.matchId DESC, a.map, a.result, b.result;`;
 
 const pvpQueries = {
     match: (tableName, matchId) => `SELECT a.round as round, a.steamid as aId, b.name as attacker, a.victim as vId, c.name as victim, SUM(a.damage) as damage
@@ -173,8 +172,8 @@ JOIN players nb ON b.steamid = nb.steamid
 JOIN round r ON a.matchId = r.matchId
 JOIN season s ON a.matchId >= s.startedAt AND a.matchId <= s.endedAt
 WHERE r.deleted = 0
-GROUP BY a.matchId, a.map, a.result, b.result
-ORDER BY a.matchId DESC, MIN(a.startedAt), MAX(a.endedAt);`;
+GROUP BY a.matchId DESC, a.map, a.result, b.result
+ORDER BY MIN(a.startedAt), MAX(a.endedAt);`;
 
 const mapWLQuery = 'SELECT steamid, campaign, result, COUNT(result) as count FROM matchlog a JOIN maps b ON a.map = b.map WHERE a.deleted = 0 GROUP BY steamid, campaign, result;';
 
