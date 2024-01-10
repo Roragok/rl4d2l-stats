@@ -789,7 +789,6 @@ const generateData = async (increment, matchIds, dataDir) => {
     i = 0;
     for (const [matchId, data] of Object.entries(leagueStats)) {
         i++;
-        if (matchId < 1657329851) continue;
         logger.info(`Writing league/${matchId}.json... ${i}/${Object.entries(leagueStats).length}`);
         await fs.writeJson(path.join(dataDir, `league/${matchId}.json`), data);
     }
@@ -797,7 +796,6 @@ const generateData = async (increment, matchIds, dataDir) => {
     i = 0;
     for (const [matchId, data] of Object.entries(seasonStats)) {
         i++;
-        if (matchId < 1657329851) continue;
         logger.info(`Writing season/${matchId}.json... ${i}/${Object.entries(seasonStats).length}`);
         await fs.writeJson(path.join(dataDir, `season/${matchId}.json`), data);
     }
@@ -825,7 +823,6 @@ const generateData = async (increment, matchIds, dataDir) => {
     i = 0;
     for (const [matchId, data] of Object.entries(matchStats)) {
         i++;
-        if (matchId < 1657329851) continue;
         logger.info(`Writing matches/${matchId}.json... ${i}/${Object.entries(matchStats).length}`);
         await fs.writeJson(path.join(dataDir, `matches/${matchId}.json`), data);
     }
