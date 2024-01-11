@@ -15,6 +15,35 @@ const path = require('path');
 const logger = require('../src/cli/logger');
 
 module.exports = async (publicDir) => {
+
+    logger.info("Deleteing stale revisions for js and css")
+    // JS Directory
+    const jsDir = path.join(publicDir, 'js');
+    // JS Regex to compare against files in directory
+    const jsRegex = /bundle\.min\..*\.js/g;
+
+    // Iterate over js directory removing stale revisions.
+    fs.readdir(jsDir, (err, files) => {
+        for (const file of files) {
+            if(file.match(jsRegex)){
+                fs.unlink(path.join(jsDir, file));
+            }
+        }
+    });
+
+    // CSS Directory
+    const cssDir = path.join(publicDir, 'css');
+    // JS Regex to compare against files in directory
+    const cssRegex = /index\.min\..*\.css/g;
+
+    // Iterate over css directory removing stale revisions.
+    fs.readdir(cssDir, (err, files) => {
+        for (const file of files) {
+            if(file.match(cssRegex)){
+                fs.unlink(path.join(cssDir, file));
+            }
+        }
+    });
     logger.info('Revisioning bundle.min.js...');
 
     const input = await fs.readFile(path.join(publicDir, 'js/bundle.min.js'), 'utf8');
