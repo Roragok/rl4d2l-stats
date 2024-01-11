@@ -193,3 +193,7 @@ only screen and (min-width: 992px) and (max-width: 1068px) {
         border-bottom: 1px solid #c7cace;
     }
 }
+
+.media-body{
+    word-break: break-word;
+}
