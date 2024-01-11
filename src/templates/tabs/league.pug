@@ -42,7 +42,7 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
                                         th Map
                                         th Match ID
                                 tbody
-                                    if teamMatches[team.season - 1]
+                                    if teamMatches[team.season - 1] && teamMatches[team.season - 1][team.steamid_0]
                                         each match, index in teamMatches[team.season - 1][team.steamid_0]
                                             tr
                                                 td
@@ -83,52 +83,53 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
                 div(class="season-container season-" + (seasonIndex + 1) + (seasonIndex + 1 === seasonOptions[0].value ? ' active' : ''))
                     h4 Schedule and Results
                     div(class="row")
-                        each weekMatches, weekIndex in seasonMatches
-                            div(class="col-lg-6 mb-3")
-                                div(class="card")
-                                    div(class="card-body")
-                                        h4(class="card-title") Week #{weekIndex + 1}
-                                        h6(class="card-subtitle mb-2 text-muted") #{weekMatches.map}
-                                        p(class="card-text")
-                                            each match in weekMatches.matches
-                                                if match.loserTeam
-                                                    if match.resultCode == 0
-                                                        div
-                                                            strong(class="text-success") #{match.winnerName} 
-                                                            small vs 
-                                                            span #{match.loserName} 
-                                                            if match.matchId
-                                                                a(class="float-right" href='/#/match/'+match.matchId) #{match.matchId}
-                                                    else if match.resultCode == 4
-                                                        div
-                                                            strong(class="text-success") #{match.winnerName} 
-                                                            small vs 
-                                                            span #{match.loserName} 
-                                                            small(class="text-danger") Forfeit
-                                                    else if match.resultCode == 1
-                                                        div
-                                                            span #{match.winnerName} 
-                                                            small vs 
-                                                            span #{match.loserName} 
-                                                            small(class="text-danger") Double Forfeit
-                                                    else if match.resultCode == 3
-                                                        div(class="text-muted")
-                                                            span #{match.winnerName} 
-                                                            small vs 
-                                                            span #{match.loserName} 
-                                                            small TBD
-                                                    else
-                                                        div
-                                                            span #{match.winnerName} 
-                                                            small vs 
-                                                            span #{match.loserName} 
-                                                            if match.matchId
-                                                                a(class="float-right" href='/#/match/'+match.matchId) #{match.matchId}
+                        if seasonMatches
+                            each weekMatches, weekIndex in seasonMatches
+                                div(class="col-lg-6 mb-3")
+                                    div(class="card")
+                                        div(class="card-body")
+                                            h4(class="card-title") Week #{weekIndex + 1}
+                                            h6(class="card-subtitle mb-2 text-muted") #{weekMatches.map}
+                                            p(class="card-text")
+                                                each match in weekMatches.matches
+                                                    if match.loserTeam
+                                                        if match.resultCode == 0
+                                                            div
+                                                                strong(class="text-success") #{match.winnerName} 
+                                                                small vs 
+                                                                span #{match.loserName} 
+                                                                if match.matchId
+                                                                    a(class="float-right" href='/#/match/'+match.matchId) #{match.matchId}
+                                                        else if match.resultCode == 4
+                                                            div
+                                                                strong(class="text-success") #{match.winnerName} 
+                                                                small vs 
+                                                                span #{match.loserName} 
+                                                                small(class="text-danger") Forfeit
+                                                        else if match.resultCode == 1
+                                                            div
+                                                                span #{match.winnerName} 
+                                                                small vs 
+                                                                span #{match.loserName} 
+                                                                small(class="text-danger") Double Forfeit
+                                                        else if match.resultCode == 3
+                                                            div(class="text-muted")
+                                                                span #{match.winnerName} 
+                                                                small vs 
+                                                                span #{match.loserName} 
+                                                                small TBD
+                                                        else
+                                                            div
+                                                                span #{match.winnerName} 
+                                                                small vs 
+                                                                span #{match.loserName} 
+                                                                if match.matchId
+                                                                    a(class="float-right" href='/#/match/'+match.matchId) #{match.matchId}
 
-                                                else
-                                                    div(class="")
-                                                        span #{match.winnerName} 
-                                                        small BYE
+                                                    else
+                                                        div(class="")
+                                                            span #{match.winnerName} 
+                                                            small BYE
 
             each draft in drafts
                 if draft
