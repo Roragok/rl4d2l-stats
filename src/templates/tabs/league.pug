@@ -131,19 +131,20 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
                                                         small BYE
 
             each draft in drafts
-                div(class="season-container season-" + draft[0].season + (draft[0].season === seasonOptions[0].value ? ' active' : ''))
-                    h4 Draft
-                    table(class="table")
-                        thead
-                            tr
-                                th Round
-                                th Pick
-                                th Player
-                                th Captain
-                        tbody
-                            each row, rowIndex in draft
-                                tr(class=(rowIndex % (draft.length / 3) == (draft.length / 3) - 1 ? 'round-divider' : ''))
-                                    td #{row.round}
-                                    td #{(row.round - 1) * (draft.length / 3) + (draft.length / 3 - row.draftOrder + 1)}
-                                    td #{row.pick}
-                                    td #{row.captain}
+                if draft
+                    div(class="season-container season-" + draft[0].season + (draft[0].season === seasonOptions[0].value ? ' active' : ''))
+                        h4 Draft
+                        table(class="table")
+                            thead
+                                tr
+                                    th Round
+                                    th Pick
+                                    th Player
+                                    th Captain
+                            tbody
+                                each row, rowIndex in draft
+                                    tr(class=(rowIndex % (draft.length / 3) == (draft.length / 3) - 1 ? 'round-divider' : ''))
+                                        td #{row.round}
+                                        td #{(row.round - 1) * (draft.length / 3) + (draft.length / 3 - row.draftOrder + 1)}
+                                        td #{row.pick}
+                                        td #{row.captain}
