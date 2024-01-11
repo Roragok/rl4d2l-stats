@@ -16,12 +16,6 @@ module.exports = async (publicDir) => {
     logger.info('Writing index.css...');
     const cssPath = path.join(publicDir, 'css/index.css');
 
-    if(fs.exists(cssPath)){
-        fs.unlink(cssPath);
-    }
-    // Lets not forever append our css file.
-    fs.createFile(cssPath)
-
     logger.info('Purging unused css...');
     const content = ['js/bundle.min.js', 'js/bootstrap.bundle.min.js', 'index.html'].map(f => path.join(publicDir, f));
     const css = ['src/css/bootstrap.css', 'src/css/app.css', 'src/css/playoffbracket.css', 'src/css/query-builder.default.min.css', 'src/css/darkmode.css'].map(f => path.join(__dirname, '../', f));
@@ -33,6 +27,7 @@ module.exports = async (publicDir) => {
 
     const results = purgecss.purge();
 
+    await fs.writeFile(cssPath, '');
     for (const result of results) {
         logger.info(`Appending purged ${result.file} to index.css...`);
         await fs.appendFile(cssPath, result.css);
