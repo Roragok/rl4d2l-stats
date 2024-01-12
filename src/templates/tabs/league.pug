@@ -44,36 +44,37 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
                                 tbody
                                     if teamMatches[team.season - 1] && teamMatches[team.season - 1][team.steamid_0]
                                         each match, index in teamMatches[team.season - 1][team.steamid_0]
-                                            tr
-                                                td
-                                                    label.collapse-rows Week 
-                                                    | #{index + 1}
-                                                if match.result == 'W'
+                                            if match
+                                                tr
                                                     td
-                                                        label.collapse-rows Result 
-                                                        span(class="text-success") #{match.result}
-                                                else if match.result == 'L' || match.result == 'FF'
+                                                        label.collapse-rows Week 
+                                                        | #{index + 1}
+                                                    if match.result == 'W'
+                                                        td
+                                                            label.collapse-rows Result 
+                                                            span(class="text-success") #{match.result}
+                                                    else if match.result == 'L' || match.result == 'FF'
+                                                        td
+                                                            label.collapse-rows Result 
+                                                            span(class="text-danger") #{match.result}
+                                                    else if match.result == 'TBD'
+                                                        td
+                                                            label.collapse-rows Result 
+                                                            span(class="text-muted") #{match.result}
+                                                    else
+                                                        td
+                                                            label.collapse-rows Result 
+                                                            span #{match.result}
                                                     td
-                                                        label.collapse-rows Result 
-                                                        span(class="text-danger") #{match.result}
-                                                else if match.result == 'TBD'
+                                                        label.collapse-rows Opponent 
+                                                        | #{match.oppTeam}
                                                     td
-                                                        label.collapse-rows Result 
-                                                        span(class="text-muted") #{match.result}
-                                                else
-                                                    td
-                                                        label.collapse-rows Result 
-                                                        span #{match.result}
-                                                td
-                                                    label.collapse-rows Opponent 
-                                                    | #{match.oppTeam}
-                                                td
-                                                    label.collapse-rows Map 
-                                                    | #{match.map}
-                                                if match.matchId
-                                                    td
-                                                        label.collapse-rows Match ID 
-                                                        a(href='/#/match/'+match.matchId) #{match.matchId}
+                                                        label.collapse-rows Map 
+                                                        | #{match.map}
+                                                    if match.matchId
+                                                        td
+                                                            label.collapse-rows Match ID 
+                                                            a(href='/#/match/'+match.matchId) #{match.matchId}
         div(class="col col-lg-6")
             h4 Playoff Bracket
             include ../playoffbrackets/season1.pug
