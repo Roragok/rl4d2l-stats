@@ -30,7 +30,6 @@
 .bracket .round .winners > div.matchups .matchup .participants .participant {
     box-sizing: border-box;
     border-left: 0.25rem solid #858585;
-    width: 10rem;
     height: 3rem;
     color: black;
 }
@@ -104,4 +103,14 @@
 }
 .bracket .round.finals .winners .connector .line {
     height: 1.5rem;
+}
+
+.bracket .matchups .h5{
+    text-align: center;
+}
+.season-8 .bracket .round.semifinals .winners .connector .line{
+    height: 9rem;
+}
+.bracket .round.loserbracket-finals .winners>div.connector .line{
+    height: 2rem;
 }

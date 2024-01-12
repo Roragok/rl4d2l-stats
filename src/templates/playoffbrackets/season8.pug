@@ -1,0 +1,44 @@
+.div(class="text-center season-container season-8" + ((seasonOptions[0] && 8 === seasonOptions[0].value) ? ' active' : ''))
+    .bracket.pb-3
+        section.round.semifinals
+            .winners
+                .matchups
+                    .matchup 
+                        div.h5 Upper Bracket
+                        a.participants(href='#')
+                            .participant.bg-light
+                                span First Seed
+                            .participant.bg-light
+                                span Second Seed
+                    .matchup 
+                        div.h5 Lower Bracket
+                        a.participants(href='#')
+                            .participant.bg-light
+                                span Third Seed
+                            .participant.bg-light
+                                span Fourth Seed
+                .connector
+                    .merger
+                    .line
+        section.round.loserbracket-finals
+            .winners
+                .matchups
+                    .matchup 
+                        div.h5 Lower Bracket Finals
+                        a.participants(href='#')
+                            .participant.bg-light
+                                span Loser of Upper Bracket
+                            .participant.bg-light
+                                span Winner of Lower Bracket
+                .connector
+                    .line
+        section.round.finals
+            .winners
+                .matchups
+                    .matchup 
+                        div.h5 Finals
+                        a.participants(href='#')
+                            .participant.bg-light
+                                span Winner of Upper Bracket
+                            .participant.bg-light
+                                span Winner of Lower Bracket Finals

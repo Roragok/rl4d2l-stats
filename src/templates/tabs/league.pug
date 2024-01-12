@@ -80,6 +80,7 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
             include ../playoffbrackets/season1.pug
             include ../playoffbrackets/season2.pug
             include ../playoffbrackets/season3.pug
+            include ../playoffbrackets/season8.pug
             each seasonMatches, seasonIndex in seasonMatchHistory
                 div(class="season-container season-" + (seasonIndex + 1) + (seasonIndex + 1 === seasonOptions[0].value ? ' active' : ''))
                     h4 Schedule and Results
