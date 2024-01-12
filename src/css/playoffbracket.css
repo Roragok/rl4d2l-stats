@@ -30,6 +30,7 @@
 .bracket .round .winners > div.matchups .matchup .participants .participant {
     box-sizing: border-box;
     border-left: 0.25rem solid #858585;
+    min-width: 13rem;
     height: 3rem;
     color: black;
 }
