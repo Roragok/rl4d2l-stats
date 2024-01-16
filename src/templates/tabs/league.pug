@@ -71,10 +71,12 @@ div(class="tab-pane main-tab-pane fade" id="league" role="tabpanel" aria-labelle
                                                     td
                                                         label.collapse-rows Map 
                                                         | #{match.map}
-                                                    if match.matchId
-                                                        td
-                                                            label.collapse-rows Match ID 
+                                                    td
+                                                        label.collapse-rows Match ID
+                                                        if match.matchId
                                                             a(href='/#/match/'+match.matchId) #{match.matchId}
+                                                        else
+                                                            | TBD
         div(class="col col-lg-6")
             h4 Playoff Bracket
             include ../playoffbrackets/season1.pug
