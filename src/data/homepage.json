@@ -110,9 +110,13 @@
             "link": "https://maps.roragok.com/UndeadZone.zip",
             "title": "The Undead Zone"
         },
-		    {
-            "link": "https://maps.roragok.com/nomercyrehab_v4.zip",
+		{
+            "link": "https://maps.roragok.com/nomercyrehab_v5.zip",
             "title": "No Mercy Rehab"
+        },
+        {
+            "link": "https://maps.roragok.com/coldfront_wick.zip",
+            "title": "Cold Front"
         }
     ],
     "autoexecLink": "https://maps.roragok.com/autoexec.cfg",
