@@ -6,8 +6,7 @@ const logger = require('../../cli/logger');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('stream')
-        .setDescription('Restart server.')
-        .setDefaultPermission(false)
+        .setDescription('Manage Twitch Streams.')
         .addStringOption(option =>
             option.setName('action')
                 .setDescription('Stream command action')
