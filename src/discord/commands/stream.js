@@ -15,75 +15,78 @@ module.exports = {
                 .addChoice('Remove', 'remove')
                 .addChoice('List', 'list'))
         .addStringOption(option =>
-            option.setName('name_or_url')
-                .setDescription('Stream name or url')),
+            option.setName('name')
+                .setDescription('Stream Channel name')),
     async execute(interaction) {
         const { guild, channel, member, client } = interaction;
         const { twitchNotificationServer } = client;
 
         const action = interaction.options.getString('action');
-        const nameOrUrl = interaction.options.getString('name_or_url');
+        const name = interaction.options.getString('name');
 
         await interaction.deferReply({ ephemeral: true });
 
-        // list subscriptions
-        if (action === 'list') {
-            const subscriptions = await twitchNotificationServer.requestSubscriptionList();
-            
+        // check we have a Streamers File
+        // If it doesn't exist copy our dummy file over
+        const exists = await fs.pathExists(path.join(__dirname, 'data/streamData.json'));
+        if(!exists){
+          await fs.copyFile(path.join(__dirname, 'data/streamData.json.example'), path.join(__dirname, 'data/streamData.json'));
+        }
+   
+        // Read our streamers file
+        const streamers = await fs.readJson(path.join(__dirname, 'data/streamData.json'));
+
+        if(action === 'list'){
             const embed = new MessageEmbed()
-                .setTitle('Twitch Stream Subscriptions')
-                .setColor(0x6441a4);
-            for (const subscription of subscriptions) {
-                try {
-                    const userId = subscription.topic.replace('https://api.twitch.tv/helix/streams?user_id=', '');
-                    const userData = await twitchNotificationServer.requestUserById(userId);
-                    embed.addField(userData.login, `Expires: ${new Date(subscription.expires_at)}`, false);
-                }
-                catch (e) {
-                    logger.error(e);
-                    await interaction.editReply({ content: 'Error creating subscription list.' });
-                    return;
-                }
+            .setTitle('Twitch Stream Subscriptions')
+            .setColor(0x6441a4);
+
+            for (const [index, streamer] of streamers) {
+                embed.addField("user", index, false);
             }
             await interaction.editReply({ embeds: [embed] });
         }
-        // add/remove subscription
-        else {
-            if (!nameOrUrl) {
-                await interaction.editReply({ content: 'No twitch username or stream link given. Usage: `!stream <add|remove> <twitch username or link>`.' });
+        else{
+            if (!name) {
+                await interaction.editReply({ content: 'No twitch username given.' });
                 return;
             }
-            
-            const streamName = nameOrUrl.match(/([^\/]*)\/*$/)[1];
-        
-            // look up userid
-            let userId;
-            try {
-                const userData = await twitchNotificationServer.requestUserByName(streamName);
-                userId = userData.id;
-            }
-            catch (e) {
-                logger.error(e);
-                await interaction.editReply({ content: 'User lookup error.' });
-                return;
-            }
-            
-            // subscribe/unsubscribe request
-            try {
-                if (action === 'add') {
-                    await twitchNotificationServer.addSubscription(userId);
+
+            if(action === 'add'){
+                if(checkUser(name, streamers)){
+                    await interaction.editReply({ content: 'User already in streamers list.' });
                 }
-                else {
-                    await twitchNotificationServer.removeSubscription(userId);
+                else{
+                    await fs.writeJson(path.join(__dirname, 'data/streamData.json'), addUser(name, streamers));
+                    await interaction.editReply({ content: 'User added to streamers list.' });
                 }
             }
-            catch (e) {
-                logger.error(e);
-                await interaction.editReply({ content: 'Add/remove subscription error.' });
-                return;
+
+            if(action === 'remove'){
+                if(checkUser(name,streamers)){
+                    await fs.writeJson(path.join(__dirname, 'data/streamData.json'), removeUser(name, streamers));
+                    await interaction.editReply({ content: 'User removed from streamers list.' });
+                }
+                else{
+                    await interaction.editReply({ content: 'User is not in streamers list.' });
+                }   
             }
-            
-            await interaction.editReply({ content: 'Subscription updated.' });
+
+        }
+
+        function checkUser(name, streamers){
+            if(streamers[name]){
+                return true;
+            }
+            return false;
+        }
+        function addUser(name, streamers){
+            streamers[name] = name;
+            return streamers;
+        }
+        function removeUser(name, streamers){
+            delete streamers[name];
+            return streamers;
         }
     },
 };
