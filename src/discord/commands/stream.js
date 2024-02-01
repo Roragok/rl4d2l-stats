@@ -40,8 +40,8 @@ module.exports = {
             .setTitle('Twitch Stream Subscriptions')
             .setColor(0x6441a4);
 
-            for (const [index, streamer] of streamers) {
-                embed.addField("user", streamer.name, false);
+            for (const [streamer] of streamers.names) {
+                embed.addField("user", streamer, false);
             }
             await interaction.editReply({ embeds: [embed] });
         }
@@ -72,36 +72,28 @@ module.exports = {
             }
 
         }
-
-        const mergeObjects = (a, b) => {
-            for (const [key, value] of Object.entries(b)) {
-                if (typeof value === 'object') {
-                    a[key] = mergeObjects(a[key] || {}, b[key]);
-                }
-                else {
-                    a[key] = value;
-                }
-            }
-            return a;
-        };
        
+        // Check if a user is in the list already
         function checkUser(name, streamers){
-            for (const [index, streamer] of streamers) {
-                if(streamer.name === name){
-                    return true;
+            let users = streamers.name;
+            if(users){
+                for (const streamer of users) {
+                    if(streamer === name){
+                        return true;
+                    }
                 }
             }
             return false;
         }
+        // Add a user to the list
         function addUser(name, streamers){                
-             return mergeObjects(streamers, { 'name': name});
+            streamers.names.push(name);
+            return streamers;
         }
         function removeUser(name, streamers){
-            for (const [index, streamer] of streamers) {
-                if(streamer.name === name){
-                    delete streamers.index
-                }
-            }
+            streamers = {
+                "names" : streamers.names.filter(e => e !== name)
+             }
             return streamers;
         }
     },
