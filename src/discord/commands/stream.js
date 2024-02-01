@@ -42,8 +42,8 @@ module.exports = {
 
             let message = "";
             let names = streamers.names;
-            for (const [streamer] of names) {
-                message += names[streamer] + "\n";
+            for (const streamer of names) {
+                message += streamer + "\n";
             }
             embed.addField("Streamers", message, false);
 
@@ -82,7 +82,7 @@ module.exports = {
             let users = streamers.names;
             if(users){
                 for (const streamer of users) {
-                    if(users[streamer] === name){
+                    if(streamer === name){
                         return true;
                     }
                 }
