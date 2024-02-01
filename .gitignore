@@ -18,6 +18,8 @@ src/discord/messageCache.json
 src/discord/toppingersData.json
 src/discord/streamData.json
 src/discord/betData.json
+src/discord/commands/data/streamData.json
+!src/discord/commands/data/streamData.json.example
 
 #MAC Stuff
 .DS_Store
@@ -30,4 +32,3 @@ excluded_steamids.json
 !excluded_steamids.json.example
 roletime.json
 !roletime.json.example
-
