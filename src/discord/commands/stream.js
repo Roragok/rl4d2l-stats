@@ -41,7 +41,7 @@ module.exports = {
             .setColor(0x6441a4);
 
             for (const [index, streamer] of streamers) {
-                embed.addField("user", index, false);
+                embed.addField("user", streamer.name, false);
             }
             await interaction.editReply({ embeds: [embed] });
         }
@@ -74,17 +74,20 @@ module.exports = {
         }
 
         function checkUser(name, streamers){
-            if(streamers[name]){
+            let streamer = streamers.find(streamer => streamer.name === name);
+            if(streamer){
                 return true;
             }
             return false;
         }
         function addUser(name, streamers){
-            streamers[name] = name;
+            streamers.push ={ 
+                'name' : name
+            };
             return streamers;
         }
         function removeUser(name, streamers){
-            delete streamers[name];
+            streamers = streamers.filter(streamer => streamer.name != name);
             return streamers;
         }
     },
