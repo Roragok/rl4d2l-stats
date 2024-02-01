@@ -40,9 +40,13 @@ module.exports = {
             .setTitle('Twitch Stream Subscriptions')
             .setColor(0x6441a4);
 
-            for (const [streamer] of streamers.names) {
-                embed.addField("user", streamer, false);
+            let message = "";
+            let names = streamers.names;
+            for (const [streamer] of names) {
+                message += names[streamer] + "\n";
             }
+            embed.addField("Streamers", message, false);
+
             await interaction.editReply({ embeds: [embed] });
         }
         else{
