@@ -73,21 +73,35 @@ module.exports = {
 
         }
 
+        const mergeObjects = (a, b) => {
+            for (const [key, value] of Object.entries(b)) {
+                if (typeof value === 'object') {
+                    a[key] = mergeObjects(a[key] || {}, b[key]);
+                }
+                else {
+                    a[key] = value;
+                }
+            }
+            return a;
+        };
+       
         function checkUser(name, streamers){
-            let streamer = streamers.find(streamer => streamer.name === name);
-            if(streamer){
-                return true;
+            for (const [index, streamer] of streamers) {
+                if(streamer.name === name){
+                    return true;
+                }
             }
             return false;
         }
-        function addUser(name, streamers){
-            streamers.push ={ 
-                'name' : name
-            };
-            return streamers;
+        function addUser(name, streamers){                
+             return mergeObjects(streamers, { 'name': name});
         }
         function removeUser(name, streamers){
-            streamers = streamers.filter(streamer => streamer.name != name);
+            for (const [index, streamer] of streamers) {
+                if(streamer.name === name){
+                    delete streamers.index
+                }
+            }
             return streamers;
         }
     },
