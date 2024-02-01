@@ -75,10 +75,10 @@ module.exports = {
        
         // Check if a user is in the list already
         function checkUser(name, streamers){
-            let users = streamers.name;
+            let users = streamers.names;
             if(users){
                 for (const streamer of users) {
-                    if(streamer === name){
+                    if(users[streamer] === name){
                         return true;
                     }
                 }
