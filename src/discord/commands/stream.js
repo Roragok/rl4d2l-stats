@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
-const config = require('../config');
-const logger = require('../../cli/logger');
+const fs = require('fs-extra');
+const path = require('path');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,8 +18,7 @@ module.exports = {
             option.setName('name')
                 .setDescription('Stream Channel name')),
     async execute(interaction) {
-        const { guild, channel, member, client } = interaction;
-        const { twitchNotificationServer } = client;
+
 
         const action = interaction.options.getString('action');
         const name = interaction.options.getString('name');
